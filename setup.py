@@ -30,7 +30,14 @@ setup(
 
     packages=find_packages(),
     package_dir={"ISAT_SAM_BACKEND": "ISAT_SAM_BACKEND"},
-    package_data={'ISAT_SAM_BACKEND': ['checkpoints/mobile_sam.pt', 'static/**', 'templates/**', 'segment_any/**']},
+    package_data={'ISAT_SAM_BACKEND': ['api/**',
+                                       'checkpoints/mobile_sam.pt',
+                                       'segment_any/**',
+                                       'services/**'
+                                       'static/**',
+                                       'templates/**',
+                                       'utils/**',
+                                       ]},
     exclude_package_data={'': ['test.py']},
 
     include_package_data=True,

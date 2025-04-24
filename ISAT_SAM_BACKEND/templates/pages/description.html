@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block contents %}
+        <!-- 使用本地图标 -->
+<!--        <img src="{{ url_for('static', path='/images/ISAT13_100.svg') }}" class="icon" alt="图标">-->
+
+    <div>
+        <h1 style="text-align: left">1. /api/info</h1>
+        <p style="text-align: left">{{ _['info api description'] }}</p>
+        <h2 style="text-align: left">method: get</h2>
+        <pre style="text-align: left">
+import numpy as np
+import requests
+
+def get_remote_info(ip, port):
+    url = f'http://{ip}:{port}/api/info'
+    response = requests.get(url)
+    if response.status_code == 200:
+        result = response.json()
+        print(result)
+        checkpoint = result['checkpoint']
+        device = result['device']
+        dtype = result['dtype']
+        return checkpoint, device, dtype
+    return None, None, None</pre>
+
+        <h1 style="text-align: left">2. /api/encode</h1>
+        <p style="text-align: left">{{ _['info encode description'] }}</p>
+        <h2 style="text-align: left">method: post</h2>
+
+        <pre style="text-align: left">
+from PIL import Image
+import numpy as np
+import requests
+
+def encode_post(ip, port, image_path):
+    url = f'http://{ip}:{port}/api/encode'
+
+    img = Image.open(image_path)
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
+    img = np.array(img)
+
+    data = {
+        'shape': ','.join(map(str, img.shape)),     # image data shape, str. eg: 640.640.3
+        'dtype': img.dtype.name,                    # image data dtype, str.
+    }
+
+    response = requests.post(url, files={'file': ('array_bytes', img.tobytes(), 'application/octet-stream'), }, data=data)
+    if response.status_code == 200:
+        result = response.json()
+
+        features = np.array(result['features'])
+        original_size = result['original_size']
+        input_size = result['input_size']
+
+        return features, original_size, input_size
+
+    return None, None, None</pre>
+
+
+    </div>
+{% endblock %}

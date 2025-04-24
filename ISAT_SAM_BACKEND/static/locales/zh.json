@@ -1,6 +1,6 @@
 {
     "title": "ISAT SAM Encode",
-    "model manage": "模型管理",
+    "model manage": "模型列表",
     "contact": "联系",
     "api description": "接口说明",
     "demo_text": "多语言示例",
@@ -10,11 +10,15 @@
     "home page description": "支持ISAT使用远程服务器进行SAM encoding",
     "current checkpoint": "当前模型: ",
     "model page title": "模型列表",
-    "model page description": "model page description",
+    "model page description": "使用命令行管理模型: isat-sam-backend model --help",
 
     "model name": "模型名",
     "memory": "显存",
     "bf16_memory": "显存(bf16)",
     "params": "硬盘",
-    "downloaded": "已下载"
+    "downloaded": "已下载",
+
+    "info api description": "返回远程服务器sam模型信息.",
+    "info encode description": "上传一张图片，返回编码后的特征图以及其他信息."
+
 }

@@ -53,7 +53,7 @@
 
         /* 调整内容区域 */
         .content {
-            margin-top: 80px; /* 为导航栏留出空间 */
+            margin-top: 00px; /* 为导航栏留出空间 */
             margin-bottom: 80px;
             width: 1200px;
         }
@@ -98,6 +98,20 @@
             width: 1200px; /* 内容最大宽度 */
             margin: 0 auto; /* 居中显示 */
         }
+        /* code */
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
 
     </style>
 </head>
@@ -107,7 +121,7 @@
             <a href="/?lang={{ current_lang }}" class="nav-brand">ISAT SAM Encode</a>
             <div class="nav-links">
                 <a href="/model?lang={{ current_lang }}" class="nav-link">{{ _['model manage'] }}</a>
-                <a href="/api?lang={{ current_lang }}" class="nav-link">{{ _['api description'] }}</a>
+                <a href="/description?lang={{ current_lang }}" class="nav-link">{{ _['api description'] }}</a>
                 <!-- 语言切换按钮 -->
                 <a href="?lang={{ 'zh' if current_lang == 'en' else 'en' }}" class="nav-link"> {{ _['toggle_lang'] }}</a>
             </div>
@@ -120,7 +134,9 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p><a href="https://github.com/yatengLG/ISAT_with_segment_anything" target="_blank" style="color: white">Github</a></p>
+            <p>
+                <a href="https://github.com/yatengLG/ISAT_with_segment_anything" target="_blank" style="color: white">ISAT with segment anything</a>
+            </p>
         </div>
     </footer>
 

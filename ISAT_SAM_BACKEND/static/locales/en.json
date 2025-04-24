@@ -1,6 +1,6 @@
 {
     "title": "ISAT SAM Encode",
-    "model manage": "Model Manage",
+    "model manage": "Model List",
     "contact": "Contact",
     "api description": "API description",
     "demo_text": "Localization Example",
@@ -10,11 +10,14 @@
     "home page description": "Support ISAT to use remote server for SAM encoding",
     "current checkpoint": "Current checkpoint: ",
     "model page title": "Model list",
-    "model page description": "model page description",
+    "model page description": "Manage models via the command line: isat-sam-backend model --help",
 
     "model name": "Model name",
     "memory": "Memory",
     "bf16_memory": "Memory(bf16)",
     "params": "Params",
-    "downloaded": "Downloaded"
+    "downloaded": "Downloaded",
+
+    "info api description": "Return remote sam model info.",
+    "info encode description": "Post a image and return encoded features and more."
 }
