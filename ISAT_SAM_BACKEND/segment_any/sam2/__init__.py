@@ -8,4 +8,4 @@ from hydra import initialize_config_module
 from hydra.core.global_hydra import GlobalHydra
 
 if not GlobalHydra.instance().is_initialized():
-    initialize_config_module("ISAT/segment_any/sam2/configs", version_base="1.2")
+    initialize_config_module("ISAT_SAM_BACKEND/segment_any/sam2/configs", version_base="1.2")

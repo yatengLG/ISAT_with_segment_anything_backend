@@ -38,11 +38,11 @@ def main():
 
     if args.command is None:
         # init sam
-        try:
-            model_path = CHECKPOINT_DIR / f'{args.checkpoint}'
-            sam.load_model(model_path=str(model_path), use_bfloat16=False)
-        except Exception as e:
-            print(f"init sam failed: {e}")
+        # try:
+        model_path = CHECKPOINT_DIR / f'{args.checkpoint}'
+        sam.load_model(model_path=str(model_path), use_bfloat16=False)
+        # except Exception as e:
+        #     print(f"init sam failed: {e}")
 
         # start server
         uvicorn.run("ISAT_SAM_BACKEND.main:app", host=args.host, port=args.port, workers=args.workers, reload=args.dev)
