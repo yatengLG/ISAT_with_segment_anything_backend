@@ -16,7 +16,7 @@ async def encode(file: bytes=File(...), shape: str=Form(...), dtype: str=Form(..
     try:
         #
         shape = tuple(map(int, shape.split(',')))
-        image_data = np.frombuffer(file, eval(f'np.{dtype}')).reshape(shape)
+        image_data = np.frombuffer(file, eval(f'np.{dtype}')).reshape(shape).copy()
         # process
         features, original_size, input_size = sam.predict(image_data)
 
