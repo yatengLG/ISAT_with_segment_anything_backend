@@ -54,7 +54,8 @@ setup(
         'tqdm>=4.66.1',
         'iopath',
         'tqdm',
-        'tabulate'
+        'tabulate',
+        'requests'
         ],
 
     classifiers=[

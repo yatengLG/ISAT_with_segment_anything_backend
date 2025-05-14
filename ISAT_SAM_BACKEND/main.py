@@ -5,11 +5,12 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from ISAT_SAM_BACKEND.utils.model_manage import list_model, download_model, remove_model
 from ISAT_SAM_BACKEND.model import sam
-from ISAT_SAM_BACKEND.config import BASE_DIR, CHECKPOINT_DIR, get_locale, templates
+from ISAT_SAM_BACKEND.config import BASE_DIR, CHECKPOINT_DIR
 import uvicorn
 import argparse
 from ISAT_SAM_BACKEND.api.v1.routers import api_router
-
+from ISAT_SAM_BACKEND import __version__
+import requests
 
 app = FastAPI(title="ISAT-SAM-BACKEND")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
@@ -34,6 +35,10 @@ def main():
     model_group.add_argument("--download", type=str, help="The model name will download")
     model_group.add_argument("--remove", type=str, help="The model name will remove")
 
+    # 子命令
+    parser_version = subparsers.add_parser("version", description="ISAT SAM backend version")
+    parser_version.add_argument("--latest", action="store_true", help="Check latest version")
+    parser_version.add_argument("--current", action="store_true", help="Print current version")
     args = parser.parse_args()
 
     if args.command is None:
@@ -55,6 +60,24 @@ def main():
         elif args.remove:
             remove_model(model_name=args.remove, checkpoints_dir=CHECKPOINT_DIR)
 
+    elif args.command == "version":
+        if args.latest:
+            print(f"Checking version ...")
+            try:
+                # check last version
+                response = requests.get(f"https://pypi.org/pypi/isat-sam-backend/json", timeout=5)
+                latest_version = response.json()["info"]["version"]
+                if latest_version != __version__:
+                    print(f"The latest version of isat-sam-backend is \033[32m{latest_version}\033[0m")
+            except:
+                print(f"\033[31mCheck version failed\033[0m")
+                pass
+        elif args.current:
+            print(f"Current version: \033[32m{__version__}\033[0m")
+        else:
+            print(f"Current version: \033[32m{__version__}\033[0m")
+    else:
+        pass
 
 if __name__ == '__main__':
     main()
