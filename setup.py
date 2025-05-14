@@ -33,7 +33,7 @@ setup(
     package_data={'ISAT_SAM_BACKEND': ['api/**',
                                        'checkpoints/mobile_sam.pt',
                                        'segment_any/**',
-                                       'services/**'
+                                       'services/**',
                                        'static/**',
                                        'templates/**',
                                        'utils/**',
