@@ -2,7 +2,10 @@
 <h2 align='center'>Support <a href="https://github.com/yatengLG/ISAT_with_segment_anything">ISAT</a> to use remote server for SAM encoding</h2>
     <p align="center">Deploy <b>isat-sam-backend</b> to a remote server. </p>
 <p align="center">Run <b>isat-sam</b> on the local machine and connect to the remote server to perform sam encoding. </p>
-
+<p align='center'>
+    <a href='https://pypi.org/project/isat-sam-backend/' target="_blank"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/isat-sam-backend"></a>
+    <a href='https://pypi.org/project/isat-sam-backend/' target="_blank"><img alt="Pepy Total Downlods" src="https://img.shields.io/pepy/dt/isat-sam-backend"></a>
+</p>
 # Use
 
 ## install
