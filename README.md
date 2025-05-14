@@ -3,6 +3,8 @@
     <p align="center">Deploy <b>isat-sam-backend</b> to a remote server. </p>
 <p align="center">Run <b>isat-sam</b> on the local machine and connect to the remote server to perform sam encoding. </p>
 <p align='center'>
+    <a href='https://github.com/yatengLG/ISAT_with_segment_anything_backend' target="_blank"><img alt="GitHub forks" src="https://img.shields.io/github/stars/yatengLG/ISAT_with_segment_anything_backend"></a>
+    <a href='https://github.com/yatengLG/ISAT_with_segment_anything_backend' target="_blank"><img alt="GitHub forks" src="https://img.shields.io/github/forks/yatengLG/ISAT_with_segment_anything_backend"></a>
     <a href='https://pypi.org/project/isat-sam-backend/' target="_blank"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/isat-sam-backend"></a>
     <a href='https://pypi.org/project/isat-sam-backend/' target="_blank"><img alt="Pepy Total Downlods" src="https://img.shields.io/pepy/dt/isat-sam-backend"></a>
 </p>
