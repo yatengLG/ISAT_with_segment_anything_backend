@@ -27,6 +27,8 @@ pip install isat-sam-backend
 ```
 
 - Run
+
+** The feature map of the SAM HQ model is too large, don`t use it on remote server.**
 ```shell
 # default model: mobile_sam.pt
 # default host: 127.0.0.1 
