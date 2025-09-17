@@ -11,11 +11,25 @@ import argparse
 from ISAT_SAM_BACKEND.api.v1.routers import api_router
 from ISAT_SAM_BACKEND import __version__
 import requests
+import os
 
 app = FastAPI(title="ISAT-SAM-BACKEND")
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 app.include_router(api_router)
+
+
+@app.on_event("startup")
+async def load_sam_model():
+    # 从环境变量获取模型路径
+    checkpoint = os.getenv("SAM_CHECKPOINT", "mobile_sam.pt")
+
+    try:
+        model_path = CHECKPOINT_DIR / checkpoint
+        sam.load_model(model_path=str(model_path), use_bfloat16=False)
+        print(f"Worker {os.getpid()} loaded model: {model_path}")
+    except Exception as e:
+        print(f"Worker {os.getpid()} init sam failed: {e}")
 
 
 def main():
@@ -42,12 +56,7 @@ def main():
     args = parser.parse_args()
 
     if args.command is None:
-        # init sam
-        try:
-            model_path = CHECKPOINT_DIR / f'{args.checkpoint}'
-            sam.load_model(model_path=str(model_path), use_bfloat16=False)
-        except Exception as e:
-            print(f"init sam failed: {e}")
+        os.environ["SAM_CHECKPOINT"] = args.checkpoint
 
         # start server
         uvicorn.run("ISAT_SAM_BACKEND.main:app", host=args.host, port=args.port, workers=args.workers, reload=args.dev)
